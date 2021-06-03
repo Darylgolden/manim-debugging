@@ -29,7 +29,7 @@ class Test(moderngl_window.WindowConfig):
         self.indices = None
 
         self.vbo = self.ctx.buffer(self.vertices.tobytes())
-        self.ibo = self.ctx.buffer(self.indices.tobytes())
+        # self.ibo = self.ctx.buffer(self.indices.tobytes())
 
         self.program = self.ctx.program(
             vertex_shader=open(SHADER_PATH / "quadratic_bezier_stroke/vert.glsl").read(),
@@ -41,7 +41,7 @@ class Test(moderngl_window.WindowConfig):
             self.program,
             self.vbo,
             *self.vertices.dtype.names, # ('point', 'unit_normal', 'color', 'vert_index')
-            index_buffer=self.ibo,
+            # index_buffer=self.ibo,
         )
 
         print("Program Members:")
