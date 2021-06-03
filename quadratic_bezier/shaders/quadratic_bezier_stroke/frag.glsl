@@ -1,7 +1,15 @@
 #version 330
 
 // #include ../include/camera_uniform_declarations.glsl
+// --------
+uniform vec2 frame_shape;
+uniform float anti_alias_width;
+uniform vec3 camera_center;
+uniform mat3 camera_rotation;
+uniform float is_fixed_in_frame;
+uniform float focal_distance;
 
+// --------
 in vec2 uv_coords;
 in vec2 uv_b2;
 
@@ -80,6 +88,7 @@ float modify_distance_for_endpoints(vec2 p, float dist, float t){
 
 
 // #include ../include/quadratic_bezier_distance.glsl
+// ---------
 // Must be inserted in a context with a definition for modify_distance_for_endpoints
 
 // All of this is with respect to a curve that's been rotated/scaled
@@ -187,6 +196,8 @@ float min_dist_to_curve(vec2 p, vec2 b2, float degree){
     float d1 = dist_to_point_on_curve(p, roots[1], b2);
     return min(d0, d1);
 }
+
+// ---------
 
 
 void main() {
